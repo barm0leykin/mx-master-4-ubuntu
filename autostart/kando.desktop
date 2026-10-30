@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Kando
+Comment=Радиальное меню — открывается haptic-кнопкой MX Master 4
+Exec=/home/ADMSK/kudr1/.local/bin/kando
+Terminal=false
+X-GNOME-Autostart-enabled=true

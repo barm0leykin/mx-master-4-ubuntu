@@ -1,0 +1,34 @@
+%YAML 1.3
+---
+# MX Master 4. Порядок правил: от специфичных к общим (первое совпавшее
+# останавливает обработку). [] матчил бы клик ЛЮБОЙ жестовой кнопки — поэтому
+# у правил «клик» всегда указано имя кнопки.
+#
+# Клик по haptic-кнопке (Actions Ring) — радиальное меню Kando у курсора.
+# Триггер — WebSocket IPC (~0.3 с). Хоткей редкой клавиши не годится:
+# KDE затирает xmodmap-маппинги; kando --menu поднимает второй AppImage (секунды).
+- MouseGesture: [Haptic]
+- Execute: [__HOME__/.local/bin/kando-show-menu, DevOps]
+...
+---
+# Жестовая кнопка (удерживать + движение, отпустить — срабатывает)
+- MouseGesture: [Mouse Up]
+- KeyPress: [Control_L, F10]
+...
+---
+- MouseGesture: [Mouse Down]
+- KeyPress: [Control_L, F8]
+...
+---
+- MouseGesture: [Mouse Left]
+- KeyPress: [Alt_L, Shift_L, Tab]
+...
+---
+- MouseGesture: [Mouse Right]
+- KeyPress: [Alt_L, Tab]
+...
+---
+# Короткое нажатие жестовой кнопки — меню приложений
+- MouseGesture: [Mouse Gesture Button]
+- KeyPress: [Super_L]
+...

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Solaar
+Comment=MX Master 4 — запуск user-сервиса (перекрывает системный автозапуск)
+Exec=systemctl --user start solaar.service
+Icon=solaar
+Terminal=false
+X-GNOME-Autostart-enabled=true

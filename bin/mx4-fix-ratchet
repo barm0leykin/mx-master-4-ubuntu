@@ -1,0 +1,23 @@
+#!/bin/bash
+# MX Master 4: режим трещотки (mode в фиче SMART SHIFT ENHANCED) хранится в мыши
+# и сбрасывается при её сне. Solaar пере-применяет настройки только при
+# реконнекте. Скрипт проверяет режим и возвращает целевой, если слетел.
+# Запускается таймером systemd --user (mx4-ratchet.timer).
+export DISPLAY=:0
+export XAUTHORITY="$HOME/.Xauthority"
+SOLAAR="$HOME/.local/bin/solaar"
+TARGET="Вращение с храповым механизмом"
+
+CUR=$(timeout 10 "$SOLAAR" config "MX Master 4" scroll-ratchet 2>/dev/null | tail -1)
+if [ -z "$CUR" ]; then
+    echo "$(date '+%F %T'): мышь недоступна (сон/выключена) — пропуск"
+    exit 0
+fi
+if echo "$CUR" | grep -q "храповым"; then
+    exit 0  # режим на месте, ничего не пишем (лишний радио-трафик не шлём)
+fi
+if timeout 10 "$SOLAAR" config "MX Master 4" scroll-ratchet "$TARGET" >/dev/null 2>&1; then
+    echo "$(date '+%F %T'): трещотка слетела — восстановлена"
+else
+    echo "$(date '+%F %T'): записать не удалось"
+fi

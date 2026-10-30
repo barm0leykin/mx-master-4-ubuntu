@@ -1,0 +1,14 @@
+#!__HOME__/.local/venvs/solaar/bin/python3
+# Открыть меню Kando через WebSocket IPC (без бута второго экземпляра Electron).
+# Порт динамический — читается из ipc-info.json при каждом вызове.
+import json, sys, websocket
+name = sys.argv[1] if len(sys.argv) > 1 else "DevOps"
+info = json.load(open("__HOME__/.config/kando/ipc-info.json"))
+ws = websocket.create_connection(f"ws://127.0.0.1:{info['port']}", timeout=2)
+ws.send(json.dumps({"type": "show-menu", "name": name}))
+try:
+    ws.settimeout(0.3)
+    ws.recv()
+except Exception:
+    pass
+ws.close()

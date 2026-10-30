@@ -1,0 +1,1001 @@
+{
+  "version": "3.0.1",
+  "menus": [
+    {
+      "root": {
+        "name": "Пример меню",
+        "icon": "award_star",
+        "iconTheme": "material-symbols-rounded",
+        "type": "root",
+        "activateWorkflow": {
+          "quickSelectKey": "Backspace",
+          "actions": [
+            {
+              "type": "close-menu"
+            }
+          ]
+        },
+        "children": [
+          {
+            "name": "Приложения",
+            "icon": "apps",
+            "iconTheme": "material-symbols-rounded",
+            "type": "submenu",
+            "openWorkflow": {
+              "quickSelectKey": "A",
+              "actions": []
+            },
+            "activateWorkflow": {
+              "quickSelectKey": "Backspace",
+              "actions": [
+                {
+                  "type": "close-submenu"
+                }
+              ]
+            },
+            "children": [
+              {
+                "name": "Веб-браузер",
+                "icon": "globe",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "W",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "x-www-browser",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Почта",
+                "icon": "mail",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "E",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-email",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "GIMP",
+                "icon": "gimp",
+                "iconTheme": "simple-icons",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "G",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "gimp",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Проводник",
+                "icon": "folder_shared",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "F",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-open ~",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Терминал",
+                "icon": "terminal",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "T",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "x-terminal-emulator",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Веб-ссылки",
+            "icon": "public",
+            "iconTheme": "material-symbols-rounded",
+            "type": "submenu",
+            "openWorkflow": {
+              "quickSelectKey": "L",
+              "actions": []
+            },
+            "activateWorkflow": {
+              "quickSelectKey": "Backspace",
+              "actions": [
+                {
+                  "type": "close-submenu"
+                }
+              ]
+            },
+            "children": [
+              {
+                "name": "Google",
+                "icon": "google",
+                "iconTheme": "simple-icons",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "G",
+                  "actions": [
+                    {
+                      "type": "open-uri",
+                      "uri": "https://www.google.com"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Kando на GitHub",
+                "icon": "github",
+                "iconTheme": "simple-icons",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "H",
+                  "actions": [
+                    {
+                      "type": "open-uri",
+                      "uri": "https://github.com/kando-menu/kando"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Ko-fi проекта",
+                "icon": "kofi",
+                "iconTheme": "simple-icons",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "K",
+                  "actions": [
+                    {
+                      "type": "open-uri",
+                      "uri": "https://ko-fi.com/schneegans"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Kando на YouTube",
+                "icon": "youtube",
+                "iconTheme": "simple-icons",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "Y",
+                  "actions": [
+                    {
+                      "type": "open-uri",
+                      "uri": "https://www.youtube.com/@simonschneegans"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Discord - сервер Kando",
+                "icon": "discord",
+                "iconTheme": "simple-icons",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "D",
+                  "actions": [
+                    {
+                      "type": "open-uri",
+                      "uri": "https://discord.gg/hZwbVSDkhy"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Следующий рабочий стол",
+            "icon": "arrow_forward",
+            "iconTheme": "material-symbols-rounded",
+            "type": "button",
+            "selectWorkflow": {
+              "quickSelectKey": "N",
+              "actions": [
+                {
+                  "type": "simulate-hotkey",
+                  "hotkey": "ControlLeft+AltLeft+ArrowRight"
+                },
+                {
+                  "type": "close-menu"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Буфер обмена",
+            "icon": "assignment",
+            "iconTheme": "material-symbols-rounded",
+            "type": "submenu",
+            "openWorkflow": {
+              "quickSelectKey": "C",
+              "actions": []
+            },
+            "activateWorkflow": {
+              "quickSelectKey": "Backspace",
+              "actions": [
+                {
+                  "type": "close-submenu"
+                }
+              ]
+            },
+            "children": [
+              {
+                "name": "Вставить",
+                "icon": "content_paste_go",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "angle": 90,
+                "selectWorkflow": {
+                  "quickSelectKey": "V",
+                  "actions": [
+                    {
+                      "type": "close-menu"
+                    },
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "ControlLeft+KeyV"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Скопировать",
+                "icon": "content_copy",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "C",
+                  "actions": [
+                    {
+                      "type": "close-menu"
+                    },
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "ControlLeft+KeyC"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Вырезать",
+                "icon": "cut",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "X",
+                  "actions": [
+                    {
+                      "type": "close-menu"
+                    },
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "ControlLeft+KeyX"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Аудио",
+            "icon": "play_circle",
+            "iconTheme": "material-symbols-rounded",
+            "type": "submenu",
+            "openWorkflow": {
+              "quickSelectKey": "A",
+              "actions": []
+            },
+            "activateWorkflow": {
+              "quickSelectKey": "Backspace",
+              "actions": [
+                {
+                  "type": "close-submenu"
+                }
+              ]
+            },
+            "children": [
+              {
+                "name": "Следующий трек",
+                "icon": "skip_next",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "angle": 90,
+                "selectWorkflow": {
+                  "quickSelectKey": "N",
+                  "actions": [
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "MediaTrackNext"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Пуск / Пауза",
+                "icon": "play_pause",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "P",
+                  "actions": [
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "MediaPlayPause"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Беззвучный режим",
+                "icon": "music_off",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "M",
+                  "actions": [
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "AudioVolumeMute"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Предыдущий трек",
+                "icon": "skip_previous",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "angle": 270,
+                "selectWorkflow": {
+                  "quickSelectKey": "P",
+                  "actions": [
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "MediaTrackPrevious"
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Окна",
+            "icon": "select_window",
+            "iconTheme": "material-symbols-rounded",
+            "type": "submenu",
+            "openWorkflow": {
+              "quickSelectKey": "W",
+              "actions": []
+            },
+            "activateWorkflow": {
+              "quickSelectKey": "Backspace",
+              "actions": [
+                {
+                  "type": "close-submenu"
+                }
+              ]
+            },
+            "children": [
+              {
+                "name": "Развернуть",
+                "icon": "open_in_full",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "angle": 0,
+                "selectWorkflow": {
+                  "quickSelectKey": "F",
+                  "actions": [
+                    {
+                      "type": "close-menu"
+                    },
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "MetaLeft+ArrowUp"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Окно вправо",
+                "icon": "text_select_jump_to_end",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "angle": 90,
+                "selectWorkflow": {
+                  "quickSelectKey": "R",
+                  "actions": [
+                    {
+                      "type": "close-menu"
+                    },
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "MetaLeft+ArrowRight"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Закрыть окно",
+                "icon": "cancel_presentation",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "X",
+                  "actions": [
+                    {
+                      "type": "close-menu"
+                    },
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "AltLeft+F4"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Окно влево",
+                "icon": "text_select_jump_to_beginning",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "angle": 270,
+                "selectWorkflow": {
+                  "quickSelectKey": "L",
+                  "actions": [
+                    {
+                      "type": "close-menu"
+                    },
+                    {
+                      "type": "simulate-hotkey",
+                      "hotkey": "MetaLeft+ArrowLeft"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Предыдущий рабочий стол",
+            "icon": "arrow_back",
+            "iconTheme": "material-symbols-rounded",
+            "type": "button",
+            "selectWorkflow": {
+              "quickSelectKey": "P",
+              "actions": [
+                {
+                  "type": "simulate-hotkey",
+                  "hotkey": "ControlLeft+AltLeft+ArrowLeft"
+                },
+                {
+                  "type": "close-menu"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Папки",
+            "icon": "folder_special",
+            "iconTheme": "material-symbols-rounded",
+            "type": "submenu",
+            "openWorkflow": {
+              "quickSelectKey": "B",
+              "actions": []
+            },
+            "activateWorkflow": {
+              "quickSelectKey": "Backspace",
+              "actions": [
+                {
+                  "type": "close-submenu"
+                }
+              ]
+            },
+            "children": [
+              {
+                "name": "Загрузки",
+                "icon": "download",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "D",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-open \"$(xdg-user-dir DOWNLOAD)\"",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Видео",
+                "icon": "video_camera_front",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "V",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-open \"$(xdg-user-dir VIDEOS)\"",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Фото",
+                "icon": "imagesmode",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "P",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-open \"$(xdg-user-dir PICTURES)\"",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Документы",
+                "icon": "text_ad",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "O",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-open \"$(xdg-user-dir DOCUMENTS)\"",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Рабочий стол",
+                "icon": "desktop_windows",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "E",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-open \"$(xdg-user-dir DESKTOP)\"",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Домашняя папка",
+                "icon": "home",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "H",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-open ~",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Музыка",
+                "icon": "music_note",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "M",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "xdg-open \"$(xdg-user-dir MUSIC)\"",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "shortcut": "Control+Space",
+      "shortcutID": "example-menu",
+      "useFixedPosition": false,
+      "fixedMenuPosition": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchored": false,
+      "hoverMode": false,
+      "tags": []
+    },
+    {
+      "root": {
+        "name": "DevOps",
+        "icon": "terminal",
+        "iconTheme": "material-symbols-rounded",
+        "type": "root",
+        "activateWorkflow": {
+          "quickSelectKey": "Backspace",
+          "actions": [
+            {
+              "type": "close-menu"
+            }
+          ]
+        },
+        "children": [
+          {
+            "name": "Репозитории",
+            "icon": "dailydotdev",
+            "iconTheme": "simple-icons",
+            "type": "submenu",
+            "openWorkflow": {
+              "quickSelectKey": "R",
+              "actions": []
+            },
+            "activateWorkflow": {
+              "quickSelectKey": "Backspace",
+              "actions": [
+                {
+                  "type": "close-submenu"
+                }
+              ]
+            },
+            "children": [
+              {
+                "name": "deploy-configs-prod",
+                "icon": "article_person",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "D",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "code ~/mts/work/git/deploy/deploy-configs-argocd-prod",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "argocd-prod",
+                "icon": "article_person",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "A",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "code ~/mts/work/kubernetes/argocd-prod",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Терминал",
+            "icon": "terminal",
+            "iconTheme": "material-symbols-rounded",
+            "type": "button",
+            "selectWorkflow": {
+              "quickSelectKey": "T",
+              "actions": [
+                {
+                  "type": "execute-command",
+                  "command": "konsole",
+                  "detached": true,
+                  "isolated": false
+                },
+                {
+                  "type": "close-menu"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Файлы",
+            "icon": "folder",
+            "iconTheme": "material-symbols-rounded",
+            "type": "button",
+            "selectWorkflow": {
+              "quickSelectKey": "F",
+              "actions": [
+                {
+                  "type": "execute-command",
+                  "command": "dolphin",
+                  "detached": true,
+                  "isolated": false
+                },
+                {
+                  "type": "close-menu"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Окна",
+            "icon": "grid_view",
+            "iconTheme": "material-symbols-rounded",
+            "type": "submenu",
+            "openWorkflow": {
+              "quickSelectKey": "W",
+              "actions": []
+            },
+            "activateWorkflow": {
+              "quickSelectKey": "Backspace",
+              "actions": [
+                {
+                  "type": "close-submenu"
+                }
+              ]
+            },
+            "children": [
+              {
+                "name": "Все окна",
+                "icon": "grid_view",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "A",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut ExposeAll",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Сетка столов",
+                "icon": "apps",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "G",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut ShowDesktopGrid",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Показать стол",
+                "icon": "minimize",
+                "iconTheme": "material-symbols-rounded",
+                "type": "button",
+                "selectWorkflow": {
+                  "quickSelectKey": "D",
+                  "actions": [
+                    {
+                      "type": "execute-command",
+                      "command": "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut \"Show Desktop\"",
+                      "detached": true,
+                      "isolated": false
+                    },
+                    {
+                      "type": "close-menu"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Браузер",
+            "icon": "public",
+            "iconTheme": "material-symbols-rounded",
+            "type": "button",
+            "selectWorkflow": {
+              "quickSelectKey": "B",
+              "actions": [
+                {
+                  "type": "execute-command",
+                  "command": "firefox",
+                  "detached": true,
+                  "isolated": false
+                },
+                {
+                  "type": "close-menu"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Скриншот области",
+            "icon": "photo_camera",
+            "iconTheme": "material-symbols-rounded",
+            "type": "button",
+            "selectWorkflow": {
+              "quickSelectKey": "S",
+              "actions": [
+                {
+                  "type": "execute-command",
+                  "command": "flameshot gui",
+                  "detached": true,
+                  "isolated": false
+                },
+                {
+                  "type": "close-menu"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Klipper",
+            "icon": "clipboard-item.svg",
+            "iconTheme": "kando",
+            "type": "button",
+            "selectWorkflow": {
+              "actions": [
+                {
+                  "type": "inhibit-shortcuts"
+                },
+                {
+                  "type": "close-menu"
+                },
+                {
+                  "type": "simulate-hotkey",
+                  "hotkey": "MetaLeft+KeyV"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "shortcut": "F13",
+      "shortcutID": "devops-menu",
+      "useFixedPosition": false,
+      "fixedMenuPosition": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchored": false,
+      "hoverMode": false,
+      "tags": []
+    }
+  ],
+  "collections": [
+    {
+      "name": "Favorites",
+      "icon": "favorite",
+      "iconTheme": "material-symbols-rounded",
+      "tags": [
+        "favs"
+      ]
+    }
+  ]
+}

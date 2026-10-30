@@ -1,0 +1,6 @@
+[Unit]
+Description=MX Master 4: восстановление трещотки после сна мыши
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/mx4-fix-ratchet

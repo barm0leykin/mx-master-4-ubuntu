@@ -1,0 +1,7 @@
+#!/bin/bash
+# Запуск Solaar с нужным окружением (X + dbus) и группой input (для uinput-
+# симуляции клавиш). Используется автозапуском и resume-хуком после suspend.
+export DISPLAY=:0
+export XAUTHORITY="$HOME/.Xauthority"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+exec sg input -c "exec $HOME/.local/venvs/solaar/bin/solaar --debug --window=hide >/tmp/solaar-debug.log 2>&1"

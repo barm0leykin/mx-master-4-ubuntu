@@ -1,0 +1,10 @@
+[Unit]
+Description=Solaar — драйвер MX Master 4 (жесты, правила, трей)
+
+[Service]
+ExecStart=%h/.local/bin/solaar-start
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

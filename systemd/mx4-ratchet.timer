@@ -1,0 +1,9 @@
+[Unit]
+Description=MX Master 4: периодическая проверка трещотки
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+
+[Install]
+WantedBy=timers.target

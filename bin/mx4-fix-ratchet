@@ -21,3 +21,11 @@ if timeout 10 "$SOLAAR" config "MX Master 4" scroll-ratchet "$TARGET" >/dev/null
 else
     echo "$(date '+%F %T'): записать не удалось"
 fi
+
+# средний клик: действие слетает при сбоях мыши и перезаписывается GUI Solaar —
+# возвращаем "Mouse Middle Button", если отклонилось
+ACT=$(timeout 10 "$HOME/.local/bin/solaar" config "MX Master 4" reprogrammable-keys 2>/dev/null | tail -1)
+if [ -n "$ACT" ] && ! echo "$ACT" | grep -q "Middle Button:Mouse Middle Button"; then
+    timeout 10 "$HOME/.local/bin/solaar" config "MX Master 4" reprogrammable-keys "Middle Button" "Mouse Middle Button" >/dev/null 2>&1 \
+      && echo "$(date '+%F %T'): действие средней кнопки восстановлено"
+fi

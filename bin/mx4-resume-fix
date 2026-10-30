@@ -23,6 +23,12 @@ if ! echo "$CUR" | grep -q "Перенаправлено"; then
     echo "$(date '+%F %T'): divert-режимы пере-применены" >> "$LOG"
 fi
 
+ACT=$(timeout 10 "$HOME/.local/bin/solaar" config "MX Master 4" reprogrammable-keys 2>/dev/null | tail -1)
+if [ -n "$ACT" ] && ! echo "$ACT" | grep -q "Middle Button:Mouse Middle Button"; then
+    timeout 10 "$HOME/.local/bin/solaar" config "MX Master 4" reprogrammable-keys "Middle Button" "Mouse Middle Button" >>"$LOG" 2>&1
+    echo "$(date '+%F %T'): действие средней кнопки восстановлено" >> "$LOG"
+fi
+
 if ! pgrep -x kando >/dev/null; then
     setsid "$HOME/.local/bin/kando" >/tmp/kando.log 2>&1 &
     echo "$(date '+%F %T'): Kando перезапущен" >> "$LOG"

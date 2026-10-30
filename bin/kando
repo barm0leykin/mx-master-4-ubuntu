@@ -1,6 +1,8 @@
 #!/bin/bash
-# F13 нет в дефолтной раскладке — мапим (нужно для хоткея Kando; переживает ребут через этот же wrapper)
-xmodmap -e 'keycode 191 = F13' 2>/dev/null
-# Kando AppImage + свежий libstdc++ (conda-forge): в Ubuntu 22.04 нет GLIBCXX_3.4.32
-export LD_PRELOAD="$HOME/lib/conda/lib/libstdc++.so.6.0.36${LD_PRELOAD:+:$LD_PRELOAD}"
+# Wrapper Kando AppImage. libstdc++-shim нужен только на Ubuntu 22.04
+# (Kando хочет GLIBCXX_3.4.32, в jammy — 3.4.30); на 24.04+ файл не ставится
+# и LD_PRELOAD пропускается.
+if [ -f "$HOME/lib/conda/lib/libstdc++.so.6.0.36" ]; then
+    export LD_PRELOAD="$HOME/lib/conda/lib/libstdc++.so.6.0.36${LD_PRELOAD:+:$LD_PRELOAD}"
+fi
 exec "$HOME/Applications/Kando-3.0.1-x86_64.AppImage" "$@"

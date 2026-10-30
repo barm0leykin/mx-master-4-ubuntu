@@ -976,7 +976,7 @@
           }
         ]
       },
-      "shortcut": "F13",
+      "shortcut": "",
       "shortcutID": "devops-menu",
       "useFixedPosition": false,
       "fixedMenuPosition": {

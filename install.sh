@@ -19,18 +19,26 @@ warn() { echo -e "\033[1;33m[!]\033[0m $*" >&2; }
 [ "$(id -u)" -eq 0 ] && { warn "Запускать от обычного пользователя, sudo спросит сам."; exit 1; }
 . /etc/os-release
 log "ОС: $PRETTY_NAME"
-case "$VERSION_ID" in
-  22.04) ;;
-  *) warn "Тестировалось на Ubuntu 22.04 (KDE/X11). На $VERSION_ID libstdc++-shim для Kando может быть не нужен (п.4 пропустите при ошибке запуска Kando)." ;;
-esac
 if [ "${XDG_SESSION_TYPE:-}" != "x11" ]; then
-  warn "Сессия должна быть X11 (текущая: ${XDG_SESSION_TYPE:-неизвестно}). Жесты Solaar на Wayland не работают."
+    warn "Сессия должна быть X11 (текущая: ${XDG_SESSION_TYPE:-неизвестно}). Жесты Solaar на Wayland не работают — выберите X11-сессию на экране входа."
 fi
+PLASMA_VER="$(plasmashell --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+' | head -1 || true)"
+if [ -n "$PLASMA_VER" ] && [ "${PLASMA_VER%%.*}" -ge 6 ]; then
+    warn "Plasma $PLASMA_VER: дефолтных Ctrl+F10 (Present Windows) и Ctrl+F8 (сетка столов) может не быть (в Plasma 6 — Overview). После установки поправьте rules.yaml (жесты вверх/вниз) под свои комбинации."
+fi
+
+# Нужен ли libstdc++-shim для Kando (только если в системной libstdc++ нет GLIBCXX_3.4.32 — Ubuntu 22.04)
+NEED_SHIM=0
+strings /lib/x86_64-linux-gnu/libstdc++.so.6 2>/dev/null | grep -q 'GLIBCXX_3\.4\.32' || NEED_SHIM=1
+[ "$NEED_SHIM" -eq 1 ] && log "   системный libstdc++ старее нужного — будет установлен shim (conda-forge)" \
+                     || log "   системный libstdc++ достаточен — shim не нужен"
 
 # --- 1. Системная часть (sudo) ----------------------------------------------
 log "1/8 Системные пакеты и права"
 sudo apt-get update -qq
-sudo apt-get install -y -qq solaar curl python3-venv python3-dbus python3-gi libfuse2 zstd unzip >/dev/null
+sudo apt-get install -y -qq solaar curl python3-venv python3-dbus python3-gi zstd unzip >/dev/null
+# AppImage нужен FUSE2; в 24.04+ пакет переименован (t64)
+sudo apt-get install -y -qq libfuse2 2>/dev/null || sudo apt-get install -y -qq libfuse2t64 2>/dev/null || warn "Не установлен libfuse2/libfuse2t64 — Kando может не запуститься (AppImage)"
 
 sudo install -m 644 "$REPO_DIR/root/99-solaar-uinput.rules" /etc/udev/rules.d/99-solaar-uinput.rules
 sudo udevadm control --reload-rules
@@ -65,9 +73,9 @@ if [ ! -x ~/Applications/Kando-$KANDO_VERSION-x86_64.AppImage ]; then
 fi
 chmod +x ~/Applications/Kando-$KANDO_VERSION-x86_64.AppImage
 
-# --- 4. libstdc++-shim (нужен только на Ubuntu 22.04: Kando хочет GLIBCXX_3.4.32)
-log "4/8 libstdc++ из conda-forge (shim для 22.04)"
-if [ ! -f ~/lib/conda/lib/libstdc++.so.6.0.36 ]; then
+# --- 4. libstdc++-shim (только если системная библиотека старее: Ubuntu 22.04)
+log "4/8 libstdc++ из conda-forge (shim для Kando)"
+if [ "$NEED_SHIM" -eq 1 ] && [ ! -f ~/lib/conda/lib/libstdc++.so.6.0.36 ]; then
     mkdir -p ~/lib/conda /tmp/mx4-conda && cd /tmp/mx4-conda
     curl -fsSL -o stdcxx.conda "$LIBSTDCXX_CONDA"
     unzip -o -q stdcxx.conda 'pkg-*'
